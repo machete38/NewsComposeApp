@@ -2,8 +2,8 @@ package com.machete3845.newsapi
 
 import androidx.annotation.IntRange
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.machete3845.newsapi.models.Article
-import com.machete3845.newsapi.models.Language
+import com.machete3845.newsapi.models.ArticleDTO
+import com.machete3845.newsapi.models.LanguageDTO
 import com.machete3845.newsapi.models.Response
 import com.machete3845.newsapi.models.SortBy
 import com.machete3845.newsapi.utils.NewsApiKeyInterceptor
@@ -30,11 +30,11 @@ interface NewsApi {
         @Query("q") query: String? = null,
         @Query("from") from: Date? = null,
         @Query("from") to: Date? = null,
-        @Query("language") languages: List<Language>? = null,
+        @Query("language") languages: List<LanguageDTO>? = null,
         @Query("sortBy") sortBy: SortBy? = null,
         @Query("pageSize") @IntRange(from = 0, to = 999) pageSize: Int = 999,
         @Query("page") @IntRange(from = 1) page: Int = 1,
-    ) : Result<Response<Article>>
+    ) : Result<Response<ArticleDTO>>
 
 }
 

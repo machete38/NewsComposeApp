@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.ksp)
 }
 
 android {
-    namespace = "com.machete3845.news.database"
+    namespace = "com.machete3845.news.data"
     compileSdk = 34
 
     defaultConfig {
@@ -36,6 +35,8 @@ android {
 dependencies {
 
     implementation(libs.androidx.core.ktx)
-    ksp(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.ktx)
+    implementation(libs.kotlinx.coroutines.android)
+
+    implementation(project(":database"))
+    implementation(project(":newsapi"))
 }

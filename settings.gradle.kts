@@ -23,3 +23,5 @@ rootProject.name = "NewsComposeApp"
 include(":app")
 include(":newsapi")
 include(":database")
+include(":features:news_main")
+include(":news_data")
