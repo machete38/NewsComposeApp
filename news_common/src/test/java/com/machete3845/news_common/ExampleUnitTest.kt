@@ -1,4 +1,4 @@
-package com.machete3845.news.data
+package com.machete3845.news_common
 
 import org.junit.Test
 

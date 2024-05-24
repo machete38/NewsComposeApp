@@ -1,4 +1,4 @@
-package com.machete3845.news.data
+package com.machete3845.news_common
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.machete3845.news.data.test", appContext.packageName)
+        assertEquals("com.machete3845.news_common.test", appContext.packageName)
     }
 }

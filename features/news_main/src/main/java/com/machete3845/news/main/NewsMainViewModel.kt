@@ -5,23 +5,24 @@ import androidx.lifecycle.viewModelScope
 import com.machete3845.news.data.ArticlesRepository
 import com.machete3845.news.data.RequestResult
 import com.machete3845.news.data.map
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import javax.inject.Inject
+import javax.inject.Provider
 
-internal class NewsMainViewModel(
-    private val getAllArticlesUseCase: GetAllArticlesUseCase,
-    private val repository: ArticlesRepository) : ViewModel() {
 
-    val state: StateFlow<State> = getAllArticlesUseCase()
+@HiltViewModel
+internal class NewsMainViewModel @Inject constructor(
+    getAllArticlesUseCase: Provider<GetAllArticlesUseCase>, ) : ViewModel() {
+
+    val state: StateFlow<State> = getAllArticlesUseCase.get().invoke()
         .map { it.toState() }
         .stateIn(viewModelScope, SharingStarted.Lazily, State.None)
 
-    fun forceUpdate(){
-        val requestResultFlow = repository.fetchLatest()
 
-    }
 
 }
 

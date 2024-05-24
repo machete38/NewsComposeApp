@@ -6,10 +6,10 @@ import com.machete3845.news.database.models.ArticleDBO
 import com.machete3845.newsapi.NewsApi
 import com.machete3845.newsapi.models.ArticleDTO
 import com.machete3845.newsapi.models.Response
+import jakarta.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.merge
 import kotlinx.coroutines.flow.onEach
 
-class ArticlesRepository(
+class ArticlesRepository @Inject constructor(
     private val database: NewsDatabase,
     private val api: NewsApi
 ) {
@@ -77,9 +77,6 @@ class ArticlesRepository(
         TODO("Not implemented")
     }
 
-    fun fetchLatest(): Flow<RequestResult<List<Article>>> {
-        return getAllFromServer()
-    }
 
 }
 
